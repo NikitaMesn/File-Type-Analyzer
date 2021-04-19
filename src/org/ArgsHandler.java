@@ -1,24 +1,28 @@
 package org;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.*;
+import java.io.File;
 
 public class ArgsHandler {
 
     private byte[] fileAllBytes;
     private byte[] patternBytes;
+    private File file;
+    private String fileName;
     private String type;
 
-    public ArgsHandler(String[] args) {
+    public ArgsHandler(File file, String pattern, String type) {
         try {
-            this.fileAllBytes = Files.readAllBytes(Paths.get(args[1]));
-            this.patternBytes = args[2].getBytes();
-            this.type = args[3];
+            this.file = file;
+            this.fileAllBytes = Files.readAllBytes(Paths.get(file.getPath()));
+            this.patternBytes = pattern.getBytes();
+            this.type = type;
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
+
 
     public byte[] getFileAllBytes() {
         return fileAllBytes;
@@ -30,5 +34,9 @@ public class ArgsHandler {
 
     public String getType() {
         return type;
+    }
+
+    public String getFileName() {
+        return file.getName();
     }
 }

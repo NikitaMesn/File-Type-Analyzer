@@ -1,44 +1,37 @@
 package org;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
 
 public class NaiveAlgorithm implements SearchPattern{
 
     final private byte[] fileAllBytes;
     final private byte[] pattern;
     final private String type;
-
+    final String fileName;
 
     public NaiveAlgorithm(ArgsHandler args) {
         this.fileAllBytes = args.getFileAllBytes();
         this.pattern = args.getPatternBytes();
         this.type = args.getType();
+        this.fileName = args.getFileName();
     }
 
     @Override
-    public void getResult() {
-        long startTime = System.nanoTime();
+    public String getResult() {
+
         boolean isFound = checkByte();
-        long elapsedNanos = System.nanoTime() - startTime;
-        double second = (double) elapsedNanos / 1_000_000_000;
 
         if (!isFound) {
-            System.out.println("Unknown file type");
+            return fileName + ": " + "Unknown file type";
         } else {
-            System.out.println(type);
+            return fileName + ": " + type;
         }
-
-        System.out.println("It took " + second +" seconds");
     }
 
-
     private boolean checkByte() {
-        boolean isFound = false;
 
-        for (int i = 0; i < fileAllBytes.length && !isFound; i++) {
+        for (int i = 0; i < fileAllBytes.length; i++) {
             if (fileAllBytes[i] == pattern[0] && (fileAllBytes.length - i) >= pattern.length) {
-                for (int j = 1; j < pattern.length && !isFound; j++) {
+                for (int j = 1; j < pattern.length; j++) {
                     if (fileAllBytes[i + j] == pattern[j]) {
                         return true;
                     }
