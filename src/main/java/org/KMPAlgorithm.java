@@ -1,31 +1,17 @@
 package org;
 
-public class KMPAlgorithm implements  SearchPattern {
-    final private byte[] fileAllBytes;
-    final private byte[] pattern;
-    final private String type;
-    final String fileName;
+public class KMPAlgorithm implements PatternSearcher {
 
-    public KMPAlgorithm(ArgsHandler args) {
-        this.fileAllBytes = args.getFileAllBytes();
-        this.pattern = args.getPatternBytes();
-        this.type = args.getType();
-        this.fileName = args.getFileName();
-    }
 
     @Override
-    public String getResult() {
-        boolean isFound = KMPSearch();
+    public boolean isFound(byte[] fileAllBytes, byte[] pattern) {
 
-        if (!isFound) {
-            return fileName+ ": " + "Unknown file type";
-        } else {
-            return fileName + ": " + type;
-        }
+
+        return KMPSearch(fileAllBytes, pattern);
     }
 
-    private  boolean KMPSearch() {
-        int[] prefixFunc = prefixFunction();
+    private  boolean KMPSearch(byte[] fileAllBytes, byte[] pattern) {
+        int[] prefixFunc = prefixFunction(pattern);
         int j = 0;
 
         for (int i = 0; i < fileAllBytes.length; i++) {
@@ -45,7 +31,7 @@ public class KMPAlgorithm implements  SearchPattern {
         return false;
     }
 
-    private int[] prefixFunction() {
+    private int[] prefixFunction(byte[] pattern) {
         int[] prefixFunc = new int[pattern.length];
 
         for (int i = 1; i < pattern.length; i++) {
