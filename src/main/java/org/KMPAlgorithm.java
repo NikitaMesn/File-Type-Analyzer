@@ -6,7 +6,6 @@ public class KMPAlgorithm implements PatternSearcher {
     @Override
     public boolean isFound(byte[] fileAllBytes, byte[] pattern) {
 
-
         return KMPSearch(fileAllBytes, pattern);
     }
 

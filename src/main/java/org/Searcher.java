@@ -14,7 +14,8 @@ public class Searcher {
     PatternSearcher searcher;
 
     public Searcher(File file, SortedDatabase patterns) {
-        this.searcher = new KMPAlgorithm();
+        this.searcher = new RabinKarpAlgorithm();
+        //this.searcher = new KMPAlgorithm();
         this.patterns = patterns;
         this.file = file;
         try {
