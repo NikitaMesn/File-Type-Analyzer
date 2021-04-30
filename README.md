@@ -12,9 +12,9 @@
 ## Пройденный материал       
 При работе над этом проектом, я ознакомился со следующими топиками:
 
--Callable and Future
--Knuth-Morris-Pratt
--Rabin-Karp algorithm
--Merge sort
--The big O notation
- и т.д.
+- Callable and Future
+- Knuth-Morris-Pratt
+- Rabin-Karp algorithm
+- Merge sort
+- The big O notation
+  и т.д.
