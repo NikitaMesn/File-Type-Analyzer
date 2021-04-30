@@ -11,7 +11,7 @@ public class RabinKarpAlgorithm implements PatternSearcher{
 
         return RabinKarp(fileAllBytes, pattern);
     }
-    
+
     private  boolean RabinKarp(byte[] text, byte[] pattern) {
         int a = 53;
         long m = 1_000_000_000 + 9;

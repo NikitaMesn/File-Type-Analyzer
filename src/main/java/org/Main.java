@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.concurrent.*;
 
 public class Main {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         if (args.length < 2) {
             System.out.println("Please provide input file, pattern, type");
@@ -34,10 +34,15 @@ public class Main {
             for (Future<String> f : futures) {
                 System.out.println(f.get());
 
+
             }
 
             es.shutdown();
+
+
         }
+
+
     }
 }
 

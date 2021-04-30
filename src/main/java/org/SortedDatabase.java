@@ -53,7 +53,7 @@ public class SortedDatabase {
 
         while (i < middle && j < right) {
 
-            if (Integer.parseInt(array[i][0]) >= Integer.parseInt(array[j][0])) {
+            if (Integer.parseInt(array[i][0]) < Integer.parseInt(array[j][0])) {
                 temp[k] = array[i];
                 i++;
 

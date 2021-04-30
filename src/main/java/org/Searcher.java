@@ -14,8 +14,9 @@ public class Searcher {
     PatternSearcher searcher;
 
     public Searcher(File file, SortedDatabase patterns) {
-        this.searcher = new RabinKarpAlgorithm();
-        //this.searcher = new KMPAlgorithm();
+//        this.searcher = new RabinKarpAlgorithm();
+        this.searcher = new KMPAlgorithm();
+//        this.searcher = new NaiveAlgorithm();
         this.patterns = patterns;
         this.file = file;
         try {
@@ -25,6 +26,7 @@ public class Searcher {
         }
 
     }
+
 
     public String getAnswer() {
         String fileName = file.getName();
